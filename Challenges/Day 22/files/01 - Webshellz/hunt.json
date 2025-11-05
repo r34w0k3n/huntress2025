@@ -1,0 +1,913 @@
+[
+  {
+    "group": "Sigma",
+    "kind": "individual",
+    "document": {
+      "kind": "evtx",
+      "path": "samples/Sysmon.evtx",
+      "data": {
+        "Event": {
+          "EventData": {
+            "Image": "C:\\Windows\\System32\\cmd.exe",
+            "RuleName": "-",
+            "Description": "Windows Command Processor",
+            "OriginalFileName": "Cmd.Exe",
+            "TerminalSessionId": 0,
+            "ParentCommandLine": "c:\\windows\\system32\\inetsrv\\w3wp.exe -ap \"MyAppPool\" -v \"v4.0\" -l \"webengine4.dll\" -a \\\\.\\pipe\\iisipm11b827af-d73b-4f68-9bd8-f8a2d723e1e3 -h \"C:\\inetpub\\temp\\apppools\\MyAppPool\\MyAppPool.config\" -w \"\" -m 0 -t 20 -ta 0",
+            "Product": "Microsoft® Windows® Operating System",
+            "Company": "Microsoft Corporation",
+            "ParentProcessId": 4036,
+            "ParentUser": "IIS APPPOOL\\MyAppPool",
+            "LogonGuid": "8EED9800-8202-68E5-9229-080000000000",
+            "Hashes": "MD5=911D039E71583A07320B32BDE22F8E22,SHA256=BC866CFCDDA37E24DC2634DC282C7A0E6F55209DA17A8FA105B07414C0E7C527,IMPHASH=272245E2988E1E430500B852C4FB5E18",
+            "ParentProcessGuid": "8EED9800-8202-68E5-BA00-000000006703",
+            "ProcessId": 4168,
+            "CurrentDirectory": "c:\\windows\\system32\\inetsrv\\",
+            "ProcessGuid": "8EED9800-8581-68E5-4A01-000000006703",
+            "CommandLine": "\"c:\\windows\\system32\\cmd.exe\" /c net user",
+            "FileVersion": "10.0.17763.1697 (WinBuild.160101.0800)",
+            "User": "IIS APPPOOL\\MyAppPool",
+            "LogonId": "0x82992",
+            "IntegrityLevel": "High",
+            "ParentImage": "C:\\Windows\\System32\\inetsrv\\w3wp.exe",
+            "UtcTime": "2025-10-07 21:26:25.674"
+          },
+          "System": {
+            "EventID": 1,
+            "Level": 4,
+            "Provider_attributes": {
+              "Name": "Microsoft-Windows-Sysmon",
+              "Guid": "5770385F-C22A-43E0-BF4C-06F5698FFBD9"
+            },
+            "Version": 5,
+            "Task": 1,
+            "Opcode": 0,
+            "TimeCreated_attributes": {
+              "SystemTime": "2025-10-07T21:26:25.675179Z"
+            },
+            "Execution_attributes": {
+              "ProcessID": 3016,
+              "ThreadID": 2596
+            },
+            "Correlation": null,
+            "Keywords": "0x8000000000000000",
+            "Security_attributes": {
+              "UserID": "S-1-5-18"
+            },
+            "EventRecordID": 4348,
+            "Channel": "Microsoft-Windows-Sysmon/Operational",
+            "Computer": "EC2AMAZ-AGR00JO"
+          }
+        },
+        "Event_attributes": {
+          "xmlns": "http://schemas.microsoft.com/win/2004/08/events/event"
+        }
+      }
+    },
+    "name": "Suspicious Process By Web Server Process",
+    "timestamp": "2025-10-07T21:26:25.675179+00:00",
+    "authors": [
+      "Thomas Patzke",
+      "Florian Roth (Nextron Systems)",
+      "Zach Stanford @svch0st",
+      "Tim Shelton",
+      "Nasreddine Bencherchali (Nextron Systems)"
+    ],
+    "level": "high",
+    "source": "sigma",
+    "status": "experimental",
+    "falsepositives": [
+      "Particular web applications may spawn a shell process legitimately"
+    ],
+    "id": "8202070f-edeb-4d31-a010-a26c72ac5600",
+    "logsource": {
+      "category": "process_creation",
+      "product": "windows"
+    },
+    "references": [
+      "https://media.defense.gov/2020/Jun/09/2002313081/-1/-1/0/CSI-DETECT-AND-PREVENT-WEB-SHELL-MALWARE-20200422.PDF"
+    ],
+    "tags": [
+      "attack.persistence",
+      "attack.initial-access",
+      "attack.t1505.003",
+      "attack.t1190"
+    ]
+  },
+  {
+    "group": "Sigma",
+    "kind": "individual",
+    "document": {
+      "kind": "evtx",
+      "path": "samples/Sysmon.evtx",
+      "data": {
+        "Event": {
+          "EventData": {
+            "Image": "C:\\Windows\\System32\\cmd.exe",
+            "RuleName": "-",
+            "Description": "Windows Command Processor",
+            "OriginalFileName": "Cmd.Exe",
+            "TerminalSessionId": 0,
+            "ParentCommandLine": "c:\\windows\\system32\\inetsrv\\w3wp.exe -ap \"MyAppPool\" -v \"v4.0\" -l \"webengine4.dll\" -a \\\\.\\pipe\\iisipm11b827af-d73b-4f68-9bd8-f8a2d723e1e3 -h \"C:\\inetpub\\temp\\apppools\\MyAppPool\\MyAppPool.config\" -w \"\" -m 0 -t 20 -ta 0",
+            "Product": "Microsoft® Windows® Operating System",
+            "Company": "Microsoft Corporation",
+            "ParentProcessId": 4036,
+            "ParentUser": "IIS APPPOOL\\MyAppPool",
+            "LogonGuid": "8EED9800-8202-68E5-9229-080000000000",
+            "Hashes": "MD5=911D039E71583A07320B32BDE22F8E22,SHA256=BC866CFCDDA37E24DC2634DC282C7A0E6F55209DA17A8FA105B07414C0E7C527,IMPHASH=272245E2988E1E430500B852C4FB5E18",
+            "ParentProcessGuid": "8EED9800-8202-68E5-BA00-000000006703",
+            "ProcessId": 1064,
+            "CurrentDirectory": "c:\\windows\\system32\\inetsrv\\",
+            "ProcessGuid": "8EED9800-8587-68E5-4E01-000000006703",
+            "CommandLine": "\"c:\\windows\\system32\\cmd.exe\" /c systeminfo",
+            "FileVersion": "10.0.17763.1697 (WinBuild.160101.0800)",
+            "User": "IIS APPPOOL\\MyAppPool",
+            "LogonId": "0x82992",
+            "IntegrityLevel": "High",
+            "ParentImage": "C:\\Windows\\System32\\inetsrv\\w3wp.exe",
+            "UtcTime": "2025-10-07 21:26:31.210"
+          },
+          "System": {
+            "EventID": 1,
+            "Level": 4,
+            "Provider_attributes": {
+              "Name": "Microsoft-Windows-Sysmon",
+              "Guid": "5770385F-C22A-43E0-BF4C-06F5698FFBD9"
+            },
+            "Version": 5,
+            "Task": 1,
+            "Opcode": 0,
+            "TimeCreated_attributes": {
+              "SystemTime": "2025-10-07T21:26:31.211039Z"
+            },
+            "Execution_attributes": {
+              "ProcessID": 3016,
+              "ThreadID": 2596
+            },
+            "Correlation": null,
+            "Keywords": "0x8000000000000000",
+            "Security_attributes": {
+              "UserID": "S-1-5-18"
+            },
+            "EventRecordID": 4351,
+            "Channel": "Microsoft-Windows-Sysmon/Operational",
+            "Computer": "EC2AMAZ-AGR00JO"
+          }
+        },
+        "Event_attributes": {
+          "xmlns": "http://schemas.microsoft.com/win/2004/08/events/event"
+        }
+      }
+    },
+    "name": "Suspicious Process By Web Server Process",
+    "timestamp": "2025-10-07T21:26:31.211039+00:00",
+    "authors": [
+      "Thomas Patzke",
+      "Florian Roth (Nextron Systems)",
+      "Zach Stanford @svch0st",
+      "Tim Shelton",
+      "Nasreddine Bencherchali (Nextron Systems)"
+    ],
+    "level": "high",
+    "source": "sigma",
+    "status": "experimental",
+    "falsepositives": [
+      "Particular web applications may spawn a shell process legitimately"
+    ],
+    "id": "8202070f-edeb-4d31-a010-a26c72ac5600",
+    "logsource": {
+      "category": "process_creation",
+      "product": "windows"
+    },
+    "references": [
+      "https://media.defense.gov/2020/Jun/09/2002313081/-1/-1/0/CSI-DETECT-AND-PREVENT-WEB-SHELL-MALWARE-20200422.PDF"
+    ],
+    "tags": [
+      "attack.persistence",
+      "attack.initial-access",
+      "attack.t1505.003",
+      "attack.t1190"
+    ]
+  },
+  {
+    "group": "Sigma",
+    "kind": "individual",
+    "document": {
+      "kind": "evtx",
+      "path": "samples/Sysmon.evtx",
+      "data": {
+        "Event": {
+          "EventData": {
+            "Image": "C:\\Windows\\System32\\cmd.exe",
+            "RuleName": "-",
+            "Description": "Windows Command Processor",
+            "OriginalFileName": "Cmd.Exe",
+            "TerminalSessionId": 0,
+            "ParentCommandLine": "c:\\windows\\system32\\inetsrv\\w3wp.exe -ap \"MyAppPool\" -v \"v4.0\" -l \"webengine4.dll\" -a \\\\.\\pipe\\iisipm11b827af-d73b-4f68-9bd8-f8a2d723e1e3 -h \"C:\\inetpub\\temp\\apppools\\MyAppPool\\MyAppPool.config\" -w \"\" -m 0 -t 20 -ta 0",
+            "Product": "Microsoft® Windows® Operating System",
+            "Company": "Microsoft Corporation",
+            "ParentProcessId": 4036,
+            "ParentUser": "IIS APPPOOL\\MyAppPool",
+            "LogonGuid": "8EED9800-8202-68E5-9229-080000000000",
+            "Hashes": "MD5=911D039E71583A07320B32BDE22F8E22,SHA256=BC866CFCDDA37E24DC2634DC282C7A0E6F55209DA17A8FA105B07414C0E7C527,IMPHASH=272245E2988E1E430500B852C4FB5E18",
+            "ParentProcessGuid": "8EED9800-8202-68E5-BA00-000000006703",
+            "ProcessId": 5280,
+            "CurrentDirectory": "c:\\windows\\system32\\inetsrv\\",
+            "ProcessGuid": "8EED9800-858C-68E5-5501-000000006703",
+            "CommandLine": "\"c:\\windows\\system32\\cmd.exe\" /c ipconfig /all",
+            "FileVersion": "10.0.17763.1697 (WinBuild.160101.0800)",
+            "User": "IIS APPPOOL\\MyAppPool",
+            "LogonId": "0x82992",
+            "IntegrityLevel": "High",
+            "ParentImage": "C:\\Windows\\System32\\inetsrv\\w3wp.exe",
+            "UtcTime": "2025-10-07 21:26:36.671"
+          },
+          "System": {
+            "EventID": 1,
+            "Level": 4,
+            "Provider_attributes": {
+              "Name": "Microsoft-Windows-Sysmon",
+              "Guid": "5770385F-C22A-43E0-BF4C-06F5698FFBD9"
+            },
+            "Version": 5,
+            "Task": 1,
+            "Opcode": 0,
+            "TimeCreated_attributes": {
+              "SystemTime": "2025-10-07T21:26:36.672300Z"
+            },
+            "Execution_attributes": {
+              "ProcessID": 3016,
+              "ThreadID": 2596
+            },
+            "Correlation": null,
+            "Keywords": "0x8000000000000000",
+            "Security_attributes": {
+              "UserID": "S-1-5-18"
+            },
+            "EventRecordID": 4355,
+            "Channel": "Microsoft-Windows-Sysmon/Operational",
+            "Computer": "EC2AMAZ-AGR00JO"
+          }
+        },
+        "Event_attributes": {
+          "xmlns": "http://schemas.microsoft.com/win/2004/08/events/event"
+        }
+      }
+    },
+    "name": "Suspicious Process By Web Server Process",
+    "timestamp": "2025-10-07T21:26:36.672300+00:00",
+    "authors": [
+      "Thomas Patzke",
+      "Florian Roth (Nextron Systems)",
+      "Zach Stanford @svch0st",
+      "Tim Shelton",
+      "Nasreddine Bencherchali (Nextron Systems)"
+    ],
+    "level": "high",
+    "source": "sigma",
+    "status": "experimental",
+    "falsepositives": [
+      "Particular web applications may spawn a shell process legitimately"
+    ],
+    "id": "8202070f-edeb-4d31-a010-a26c72ac5600",
+    "logsource": {
+      "category": "process_creation",
+      "product": "windows"
+    },
+    "references": [
+      "https://media.defense.gov/2020/Jun/09/2002313081/-1/-1/0/CSI-DETECT-AND-PREVENT-WEB-SHELL-MALWARE-20200422.PDF"
+    ],
+    "tags": [
+      "attack.persistence",
+      "attack.initial-access",
+      "attack.t1505.003",
+      "attack.t1190"
+    ]
+  },
+  {
+    "group": "Sigma",
+    "kind": "individual",
+    "document": {
+      "kind": "evtx",
+      "path": "samples/Sysmon.evtx",
+      "data": {
+        "Event": {
+          "EventData": {
+            "Image": "c:\\windows\\system32\\inetsrv\\w3wp.exe",
+            "CreationUtcTime": "2025-10-07 21:27:39.100",
+            "RuleName": "EXE",
+            "ProcessId": 4036,
+            "ProcessGuid": "8EED9800-8202-68E5-BA00-000000006703",
+            "User": "IIS APPPOOL\\MyAppPool",
+            "TargetFilename": "C:\\ProgramData\\svchost.exe",
+            "UtcTime": "2025-10-07 21:27:39.100"
+          },
+          "System": {
+            "EventID": 11,
+            "Level": 4,
+            "Provider_attributes": {
+              "Name": "Microsoft-Windows-Sysmon",
+              "Guid": "5770385F-C22A-43E0-BF4C-06F5698FFBD9"
+            },
+            "Version": 2,
+            "Task": 11,
+            "Opcode": 0,
+            "TimeCreated_attributes": {
+              "SystemTime": "2025-10-07T21:27:39.111043Z"
+            },
+            "Execution_attributes": {
+              "ProcessID": 3016,
+              "ThreadID": 2596
+            },
+            "Correlation": null,
+            "Keywords": "0x8000000000000000",
+            "Security_attributes": {
+              "UserID": "S-1-5-18"
+            },
+            "EventRecordID": 4357,
+            "Channel": "Microsoft-Windows-Sysmon/Operational",
+            "Computer": "EC2AMAZ-AGR00JO"
+          }
+        },
+        "Event_attributes": {
+          "xmlns": "http://schemas.microsoft.com/win/2004/08/events/event"
+        }
+      }
+    },
+    "name": "Files With System Process Name In Unsuspected Locations",
+    "timestamp": "2025-10-07T21:27:39.111043+00:00",
+    "authors": [
+      "Sander Wiebing",
+      "Tim Shelton",
+      "Nasreddine Bencherchali (Nextron Systems)"
+    ],
+    "level": "medium",
+    "source": "sigma",
+    "status": "experimental",
+    "falsepositives": [
+      "System processes copied outside their default folders for testing purposes",
+      "Third party software naming their software with the same names as the processes mentioned here"
+    ],
+    "id": "d5866ddf-ce8f-4aea-b28e-d96485a20d3d",
+    "logsource": {
+      "category": "file_event",
+      "product": "windows"
+    },
+    "references": [
+      "Internal Research"
+    ],
+    "tags": [
+      "attack.defense-evasion",
+      "attack.t1036.005"
+    ]
+  },
+  {
+    "group": "Sigma",
+    "kind": "individual",
+    "document": {
+      "kind": "evtx",
+      "path": "samples/Sysmon.evtx",
+      "data": {
+        "Event": {
+          "EventData": {
+            "Image": "C:\\ProgramData\\svchost.exe",
+            "RuleName": "-",
+            "Description": "-",
+            "OriginalFileName": "-",
+            "TerminalSessionId": 0,
+            "ParentCommandLine": "c:\\windows\\system32\\inetsrv\\w3wp.exe -ap \"MyAppPool\" -v \"v4.0\" -l \"webengine4.dll\" -a \\\\.\\pipe\\iisipm11b827af-d73b-4f68-9bd8-f8a2d723e1e3 -h \"C:\\inetpub\\temp\\apppools\\MyAppPool\\MyAppPool.config\" -w \"\" -m 0 -t 20 -ta 0",
+            "Product": "-",
+            "Company": "-",
+            "ParentProcessId": 4036,
+            "ParentUser": "IIS APPPOOL\\MyAppPool",
+            "LogonGuid": "8EED9800-8202-68E5-9229-080000000000",
+            "Hashes": "MD5=739B9892F5A3A83204C723C10620AC68,SHA256=6C9917933B3DD0DFFE63B0472F1F36BAA7508186099C1D8B669BA5CC20E2C224,IMPHASH=C2D02FC98F1D75D7B9457468EC75DA0E",
+            "ParentProcessGuid": "8EED9800-8202-68E5-BA00-000000006703",
+            "ProcessId": 3452,
+            "CurrentDirectory": "c:\\windows\\system32\\inetsrv\\",
+            "ProcessGuid": "8EED9800-85F3-68E5-5801-000000006703",
+            "CommandLine": "\"C:\\ProgramData\\svchost.exe\"",
+            "FileVersion": "-",
+            "User": "IIS APPPOOL\\MyAppPool",
+            "LogonId": "0x82992",
+            "IntegrityLevel": "High",
+            "ParentImage": "C:\\Windows\\System32\\inetsrv\\w3wp.exe",
+            "UtcTime": "2025-10-07 21:28:19.688"
+          },
+          "System": {
+            "EventID": 1,
+            "Level": 4,
+            "Provider_attributes": {
+              "Name": "Microsoft-Windows-Sysmon",
+              "Guid": "5770385F-C22A-43E0-BF4C-06F5698FFBD9"
+            },
+            "Version": 5,
+            "Task": 1,
+            "Opcode": 0,
+            "TimeCreated_attributes": {
+              "SystemTime": "2025-10-07T21:28:19.689107Z"
+            },
+            "Execution_attributes": {
+              "ProcessID": 3016,
+              "ThreadID": 2596
+            },
+            "Correlation": null,
+            "Keywords": "0x8000000000000000",
+            "Security_attributes": {
+              "UserID": "S-1-5-18"
+            },
+            "EventRecordID": 4358,
+            "Channel": "Microsoft-Windows-Sysmon/Operational",
+            "Computer": "EC2AMAZ-AGR00JO"
+          }
+        },
+        "Event_attributes": {
+          "xmlns": "http://schemas.microsoft.com/win/2004/08/events/event"
+        }
+      }
+    },
+    "name": "System File Execution Location Anomaly",
+    "timestamp": "2025-10-07T21:28:19.689107+00:00",
+    "authors": [
+      "Florian Roth (Nextron Systems)",
+      "Patrick Bareiss",
+      "Anton Kutepov",
+      "oscd.community",
+      "Nasreddine Bencherchali (Nextron Systems)"
+    ],
+    "level": "high",
+    "source": "sigma",
+    "status": "experimental",
+    "falsepositives": [
+      "Unknown"
+    ],
+    "id": "e4a6b256-3e47-40fc-89d2-7a477edd6915",
+    "logsource": {
+      "category": "process_creation",
+      "product": "windows"
+    },
+    "references": [
+      "https://twitter.com/GelosSnake/status/934900723426439170",
+      "https://asec.ahnlab.com/en/39828/",
+      "https://www.splunk.com/en_us/blog/security/inno-setup-malware-redline-stealer-campaign.html"
+    ],
+    "tags": [
+      "attack.defense-evasion",
+      "attack.t1036"
+    ]
+  },
+  {
+    "group": "Sigma",
+    "kind": "individual",
+    "document": {
+      "kind": "evtx",
+      "path": "samples/Sysmon.evtx",
+      "data": {
+        "Event": {
+          "EventData": {
+            "Image": "C:\\ProgramData\\svchost.exe",
+            "RuleName": "-",
+            "Description": "-",
+            "OriginalFileName": "-",
+            "TerminalSessionId": 0,
+            "ParentCommandLine": "c:\\windows\\system32\\inetsrv\\w3wp.exe -ap \"MyAppPool\" -v \"v4.0\" -l \"webengine4.dll\" -a \\\\.\\pipe\\iisipm11b827af-d73b-4f68-9bd8-f8a2d723e1e3 -h \"C:\\inetpub\\temp\\apppools\\MyAppPool\\MyAppPool.config\" -w \"\" -m 0 -t 20 -ta 0",
+            "Product": "-",
+            "Company": "-",
+            "ParentProcessId": 4036,
+            "ParentUser": "IIS APPPOOL\\MyAppPool",
+            "LogonGuid": "8EED9800-8202-68E5-9229-080000000000",
+            "Hashes": "MD5=739B9892F5A3A83204C723C10620AC68,SHA256=6C9917933B3DD0DFFE63B0472F1F36BAA7508186099C1D8B669BA5CC20E2C224,IMPHASH=C2D02FC98F1D75D7B9457468EC75DA0E",
+            "ParentProcessGuid": "8EED9800-8202-68E5-BA00-000000006703",
+            "ProcessId": 3452,
+            "CurrentDirectory": "c:\\windows\\system32\\inetsrv\\",
+            "ProcessGuid": "8EED9800-85F3-68E5-5801-000000006703",
+            "CommandLine": "\"C:\\ProgramData\\svchost.exe\"",
+            "FileVersion": "-",
+            "User": "IIS APPPOOL\\MyAppPool",
+            "LogonId": "0x82992",
+            "IntegrityLevel": "High",
+            "ParentImage": "C:\\Windows\\System32\\inetsrv\\w3wp.exe",
+            "UtcTime": "2025-10-07 21:28:19.688"
+          },
+          "System": {
+            "EventID": 1,
+            "Level": 4,
+            "Provider_attributes": {
+              "Name": "Microsoft-Windows-Sysmon",
+              "Guid": "5770385F-C22A-43E0-BF4C-06F5698FFBD9"
+            },
+            "Version": 5,
+            "Task": 1,
+            "Opcode": 0,
+            "TimeCreated_attributes": {
+              "SystemTime": "2025-10-07T21:28:19.689107Z"
+            },
+            "Execution_attributes": {
+              "ProcessID": 3016,
+              "ThreadID": 2596
+            },
+            "Correlation": null,
+            "Keywords": "0x8000000000000000",
+            "Security_attributes": {
+              "UserID": "S-1-5-18"
+            },
+            "EventRecordID": 4358,
+            "Channel": "Microsoft-Windows-Sysmon/Operational",
+            "Computer": "EC2AMAZ-AGR00JO"
+          }
+        },
+        "Event_attributes": {
+          "xmlns": "http://schemas.microsoft.com/win/2004/08/events/event"
+        }
+      }
+    },
+    "name": "Uncommon Svchost Parent Process",
+    "timestamp": "2025-10-07T21:28:19.689107+00:00",
+    "authors": [
+      "Florian Roth (Nextron Systems)"
+    ],
+    "level": "medium",
+    "source": "sigma",
+    "status": "experimental",
+    "falsepositives": [
+      "Unknown"
+    ],
+    "id": "01d2e2a1-5f09-44f7-9fc1-24faa7479b6d",
+    "logsource": {
+      "category": "process_creation",
+      "product": "windows"
+    },
+    "references": [
+      "Internal Research"
+    ],
+    "tags": [
+      "attack.defense-evasion",
+      "attack.t1036.005"
+    ]
+  },
+  {
+    "group": "Sigma",
+    "kind": "individual",
+    "document": {
+      "kind": "evtx",
+      "path": "samples/Sysmon.evtx",
+      "data": {
+        "Event": {
+          "EventData": {
+            "Image": "C:\\ProgramData\\svchost.exe",
+            "RuleName": "-",
+            "Description": "-",
+            "OriginalFileName": "-",
+            "TerminalSessionId": 0,
+            "ParentCommandLine": "c:\\windows\\system32\\inetsrv\\w3wp.exe -ap \"MyAppPool\" -v \"v4.0\" -l \"webengine4.dll\" -a \\\\.\\pipe\\iisipm11b827af-d73b-4f68-9bd8-f8a2d723e1e3 -h \"C:\\inetpub\\temp\\apppools\\MyAppPool\\MyAppPool.config\" -w \"\" -m 0 -t 20 -ta 0",
+            "Product": "-",
+            "Company": "-",
+            "ParentProcessId": 4036,
+            "ParentUser": "IIS APPPOOL\\MyAppPool",
+            "LogonGuid": "8EED9800-8202-68E5-9229-080000000000",
+            "Hashes": "MD5=739B9892F5A3A83204C723C10620AC68,SHA256=6C9917933B3DD0DFFE63B0472F1F36BAA7508186099C1D8B669BA5CC20E2C224,IMPHASH=C2D02FC98F1D75D7B9457468EC75DA0E",
+            "ParentProcessGuid": "8EED9800-8202-68E5-BA00-000000006703",
+            "ProcessId": 3452,
+            "CurrentDirectory": "c:\\windows\\system32\\inetsrv\\",
+            "ProcessGuid": "8EED9800-85F3-68E5-5801-000000006703",
+            "CommandLine": "\"C:\\ProgramData\\svchost.exe\"",
+            "FileVersion": "-",
+            "User": "IIS APPPOOL\\MyAppPool",
+            "LogonId": "0x82992",
+            "IntegrityLevel": "High",
+            "ParentImage": "C:\\Windows\\System32\\inetsrv\\w3wp.exe",
+            "UtcTime": "2025-10-07 21:28:19.688"
+          },
+          "System": {
+            "EventID": 1,
+            "Level": 4,
+            "Provider_attributes": {
+              "Name": "Microsoft-Windows-Sysmon",
+              "Guid": "5770385F-C22A-43E0-BF4C-06F5698FFBD9"
+            },
+            "Version": 5,
+            "Task": 1,
+            "Opcode": 0,
+            "TimeCreated_attributes": {
+              "SystemTime": "2025-10-07T21:28:19.689107Z"
+            },
+            "Execution_attributes": {
+              "ProcessID": 3016,
+              "ThreadID": 2596
+            },
+            "Correlation": null,
+            "Keywords": "0x8000000000000000",
+            "Security_attributes": {
+              "UserID": "S-1-5-18"
+            },
+            "EventRecordID": 4358,
+            "Channel": "Microsoft-Windows-Sysmon/Operational",
+            "Computer": "EC2AMAZ-AGR00JO"
+          }
+        },
+        "Event_attributes": {
+          "xmlns": "http://schemas.microsoft.com/win/2004/08/events/event"
+        }
+      }
+    },
+    "name": "Suspicious Process Masquerading As SvcHost.EXE",
+    "timestamp": "2025-10-07T21:28:19.689107+00:00",
+    "authors": [
+      "Swachchhanda Shrawan Poudel"
+    ],
+    "level": "high",
+    "source": "sigma",
+    "status": "experimental",
+    "falsepositives": [
+      "Unlikely"
+    ],
+    "id": "be58d2e2-06c8-4f58-b666-b99f6dc3b6cd",
+    "logsource": {
+      "category": "process_creation",
+      "product": "windows"
+    },
+    "references": [
+      "https://tria.ge/240731-jh4crsycnb/behavioral2",
+      "https://redcanary.com/blog/threat-detection/process-masquerading/"
+    ],
+    "tags": [
+      "attack.defense-evasion",
+      "attack.t1036.005"
+    ]
+  },
+  {
+    "group": "Sigma",
+    "kind": "individual",
+    "document": {
+      "kind": "evtx",
+      "path": "samples/Sysmon.evtx",
+      "data": {
+        "Event": {
+          "EventData": {
+            "Image": "C:\\Windows\\System32\\net.exe",
+            "RuleName": "-",
+            "Description": "Net Command",
+            "OriginalFileName": "net.exe",
+            "TerminalSessionId": 0,
+            "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+            "Product": "Microsoft® Windows® Operating System",
+            "Company": "Microsoft Corporation",
+            "ParentProcessId": 5888,
+            "ParentUser": "NT AUTHORITY\\SYSTEM",
+            "LogonGuid": "8EED9800-8141-68E5-E703-000000000000",
+            "Hashes": "MD5=AE61D8F04BCDE8158304067913160B31,SHA256=25C8266D2BC1D5626DCDF72419838B397D28D44D00AC09F02FF4E421B43EC369,IMPHASH=57F0C47AE2A1A2C06C8B987372AB0B07",
+            "ParentProcessGuid": "8EED9800-8632-68E5-5A01-000000006703",
+            "ProcessId": 2548,
+            "CurrentDirectory": "C:\\ProgramData\\",
+            "ProcessGuid": "8EED9800-8672-68E5-5C01-000000006703",
+            "CommandLine": "net  user IIS_USER VJGSuERc6qYAYPdRc556JTHqxqWwLbPwzABc0XgIhgwYEWdQji1 /add",
+            "FileVersion": "10.0.17763.1 (WinBuild.160101.0800)",
+            "User": "NT AUTHORITY\\SYSTEM",
+            "LogonId": "0x3e7",
+            "IntegrityLevel": "System",
+            "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+            "UtcTime": "2025-10-07 21:30:26.289"
+          },
+          "System": {
+            "EventID": 1,
+            "Level": 4,
+            "Provider_attributes": {
+              "Name": "Microsoft-Windows-Sysmon",
+              "Guid": "5770385F-C22A-43E0-BF4C-06F5698FFBD9"
+            },
+            "Version": 5,
+            "Task": 1,
+            "Opcode": 0,
+            "TimeCreated_attributes": {
+              "SystemTime": "2025-10-07T21:30:26.290524Z"
+            },
+            "Execution_attributes": {
+              "ProcessID": 3016,
+              "ThreadID": 2596
+            },
+            "Correlation": null,
+            "Keywords": "0x8000000000000000",
+            "Security_attributes": {
+              "UserID": "S-1-5-18"
+            },
+            "EventRecordID": 4363,
+            "Channel": "Microsoft-Windows-Sysmon/Operational",
+            "Computer": "EC2AMAZ-AGR00JO"
+          }
+        },
+        "Event_attributes": {
+          "xmlns": "http://schemas.microsoft.com/win/2004/08/events/event"
+        }
+      }
+    },
+    "name": "New User Created Via Net.EXE",
+    "timestamp": "2025-10-07T21:30:26.290524+00:00",
+    "authors": [
+      "Endgame",
+      "JHasenbusch (adapted to Sigma for oscd.community)"
+    ],
+    "level": "medium",
+    "source": "sigma",
+    "status": "experimental",
+    "falsepositives": [
+      "Legitimate user creation.",
+      "Better use event IDs for user creation rather than command line rules."
+    ],
+    "id": "cd219ff3-fa99-45d4-8380-a7d15116c6dc",
+    "logsource": {
+      "category": "process_creation",
+      "product": "windows"
+    },
+    "references": [
+      "https://eqllib.readthedocs.io/en/latest/analytics/014c3f51-89c6-40f1-ac9c-5688f26090ab.html",
+      "https://github.com/redcanaryco/atomic-red-team/blob/f339e7da7d05f6057fdfcdd3742bfcf365fee2a9/atomics/T1136.001/T1136.001.md"
+    ],
+    "tags": [
+      "attack.persistence",
+      "attack.t1136.001"
+    ]
+  },
+  {
+    "group": "Sigma",
+    "kind": "individual",
+    "document": {
+      "kind": "evtx",
+      "path": "samples/Sysmon.evtx",
+      "data": {
+        "Event": {
+          "EventData": {
+            "Image": "C:\\Windows\\System32\\net1.exe",
+            "RuleName": "-",
+            "Description": "Net Command",
+            "OriginalFileName": "net1.exe",
+            "TerminalSessionId": 0,
+            "ParentCommandLine": "net  user IIS_USER VJGSuERc6qYAYPdRc556JTHqxqWwLbPwzABc0XgIhgwYEWdQji1 /add",
+            "Product": "Microsoft® Windows® Operating System",
+            "Company": "Microsoft Corporation",
+            "ParentProcessId": 2548,
+            "ParentUser": "NT AUTHORITY\\SYSTEM",
+            "LogonGuid": "8EED9800-8141-68E5-E703-000000000000",
+            "Hashes": "MD5=63DD4523677E62A73A8A7494DB321EA2,SHA256=C687157FD58EAA51757CDA87D06C30953A31F03F5356B9F5A9C004FA4BAD4BF5,IMPHASH=41DBA1AF77E1A2260F0CE46D59ADCB5E",
+            "ParentProcessGuid": "8EED9800-8672-68E5-5C01-000000006703",
+            "ProcessId": 412,
+            "CurrentDirectory": "C:\\ProgramData\\",
+            "ProcessGuid": "8EED9800-8672-68E5-5D01-000000006703",
+            "CommandLine": "C:\\Windows\\system32\\net1  user IIS_USER VJGSuERc6qYAYPdRc556JTHqxqWwLbPwzABc0XgIhgwYEWdQji1 /add",
+            "FileVersion": "10.0.17763.1 (WinBuild.160101.0800)",
+            "User": "NT AUTHORITY\\SYSTEM",
+            "LogonId": "0x3e7",
+            "IntegrityLevel": "System",
+            "ParentImage": "C:\\Windows\\System32\\net.exe",
+            "UtcTime": "2025-10-07 21:30:26.296"
+          },
+          "System": {
+            "EventID": 1,
+            "Level": 4,
+            "Provider_attributes": {
+              "Name": "Microsoft-Windows-Sysmon",
+              "Guid": "5770385F-C22A-43E0-BF4C-06F5698FFBD9"
+            },
+            "Version": 5,
+            "Task": 1,
+            "Opcode": 0,
+            "TimeCreated_attributes": {
+              "SystemTime": "2025-10-07T21:30:26.297336Z"
+            },
+            "Execution_attributes": {
+              "ProcessID": 3016,
+              "ThreadID": 2596
+            },
+            "Correlation": null,
+            "Keywords": "0x8000000000000000",
+            "Security_attributes": {
+              "UserID": "S-1-5-18"
+            },
+            "EventRecordID": 4364,
+            "Channel": "Microsoft-Windows-Sysmon/Operational",
+            "Computer": "EC2AMAZ-AGR00JO"
+          }
+        },
+        "Event_attributes": {
+          "xmlns": "http://schemas.microsoft.com/win/2004/08/events/event"
+        }
+      }
+    },
+    "name": "New User Created Via Net.EXE",
+    "timestamp": "2025-10-07T21:30:26.297336+00:00",
+    "authors": [
+      "Endgame",
+      "JHasenbusch (adapted to Sigma for oscd.community)"
+    ],
+    "level": "medium",
+    "source": "sigma",
+    "status": "experimental",
+    "falsepositives": [
+      "Legitimate user creation.",
+      "Better use event IDs for user creation rather than command line rules."
+    ],
+    "id": "cd219ff3-fa99-45d4-8380-a7d15116c6dc",
+    "logsource": {
+      "category": "process_creation",
+      "product": "windows"
+    },
+    "references": [
+      "https://eqllib.readthedocs.io/en/latest/analytics/014c3f51-89c6-40f1-ac9c-5688f26090ab.html",
+      "https://github.com/redcanaryco/atomic-red-team/blob/f339e7da7d05f6057fdfcdd3742bfcf365fee2a9/atomics/T1136.001/T1136.001.md"
+    ],
+    "tags": [
+      "attack.persistence",
+      "attack.t1136.001"
+    ]
+  },
+  {
+    "group": "Sigma",
+    "kind": "individual",
+    "document": {
+      "kind": "evtx",
+      "path": "samples/Sysmon.evtx",
+      "data": {
+        "Event": {
+          "EventData": {
+            "Image": "C:\\ProgramData\\frpc.exe",
+            "RuleName": "-",
+            "Description": "-",
+            "OriginalFileName": "-",
+            "TerminalSessionId": 0,
+            "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+            "Product": "-",
+            "Company": "-",
+            "ParentProcessId": 5888,
+            "ParentUser": "NT AUTHORITY\\SYSTEM",
+            "LogonGuid": "8EED9800-8141-68E5-E703-000000000000",
+            "Hashes": "MD5=AD509C1002ED221F506C366654953BF6,SHA256=EF35CDD1FB4FA92121CEBAF1177BA6954571E08E47D7CFA228EABA5436BEE798,IMPHASH=B196866F0BF37F1F128FA153413B744F",
+            "ParentProcessGuid": "8EED9800-8632-68E5-5A01-000000006703",
+            "ProcessId": 5060,
+            "CurrentDirectory": "C:\\ProgramData\\",
+            "ProcessGuid": "8EED9800-86F2-68E5-5E01-000000006703",
+            "CommandLine": "frpc.exe  -c frpc.ini",
+            "FileVersion": "-",
+            "User": "NT AUTHORITY\\SYSTEM",
+            "LogonId": "0x3e7",
+            "IntegrityLevel": "System",
+            "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+            "UtcTime": "2025-10-07 21:32:34.921"
+          },
+          "System": {
+            "EventID": 1,
+            "Level": 4,
+            "Provider_attributes": {
+              "Name": "Microsoft-Windows-Sysmon",
+              "Guid": "5770385F-C22A-43E0-BF4C-06F5698FFBD9"
+            },
+            "Version": 5,
+            "Task": 1,
+            "Opcode": 0,
+            "TimeCreated_attributes": {
+              "SystemTime": "2025-10-07T21:32:35.061708Z"
+            },
+            "Execution_attributes": {
+              "ProcessID": 3016,
+              "ThreadID": 2596
+            },
+            "Correlation": null,
+            "Keywords": "0x8000000000000000",
+            "Security_attributes": {
+              "UserID": "S-1-5-18"
+            },
+            "EventRecordID": 4366,
+            "Channel": "Microsoft-Windows-Sysmon/Operational",
+            "Computer": "EC2AMAZ-AGR00JO"
+          }
+        },
+        "Event_attributes": {
+          "xmlns": "http://schemas.microsoft.com/win/2004/08/events/event"
+        }
+      }
+    },
+    "name": "PUA - Fast Reverse Proxy (FRP) Execution",
+    "timestamp": "2025-10-07T21:32:35.061708+00:00",
+    "authors": [
+      "frack113",
+      "Florian Roth"
+    ],
+    "level": "high",
+    "source": "sigma",
+    "status": "experimental",
+    "falsepositives": [
+      "Legitimate use"
+    ],
+    "id": "32410e29-5f94-4568-b6a3-d91a8adad863",
+    "logsource": {
+      "category": "process_creation",
+      "product": "windows"
+    },
+    "references": [
+      "https://asec.ahnlab.com/en/38156/",
+      "https://github.com/fatedier/frp"
+    ],
+    "tags": [
+      "attack.command-and-control",
+      "attack.t1090"
+    ]
+  }
+]
